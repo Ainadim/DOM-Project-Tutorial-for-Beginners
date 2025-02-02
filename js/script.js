@@ -30,19 +30,15 @@ function ShowAllMilestoneName() {
 function openMileStone(mileStoneElement){
     const currentElement = mileStoneElement.parentNode.nextElementSibling;
     const allShow = document.querySelector(".show")
-
     if (allShow && !currentElement.classList.contains("show")) {
         allShow.classList.remove("show");
     }
-
     currentElement.classList.toggle("show");
 
     const allActive = document.querySelector(".active")
-    
     if (allActive && !mileStoneElement.classList.contains("active")) {
         allActive.classList.remove("active");
-    }
-    
+    }    
     mileStoneElement.classList.toggle("active");
 }
 
