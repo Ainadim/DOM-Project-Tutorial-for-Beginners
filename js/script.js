@@ -7,7 +7,7 @@ function ShowAllMilestoneName() {
         return `<div class="milestone border-b">
             <div class="flex">
               <div class="checkbox"><input type="checkbox" /></div>
-              <div onClick="openMileStone(this)">
+              <div onClick="openMileStone(this, ${singleData._id})">
                 <p>
                   ${singleData.name}
                   <span><i class="fas fa-chevron-down"></i></span>
@@ -27,7 +27,7 @@ function ShowAllMilestoneName() {
     }).join('')}`
 }
 
-function openMileStone(mileStoneElement){
+function openMileStone(mileStoneElement,id){
     const currentElement = mileStoneElement.parentNode.nextElementSibling;
     const allShow = document.querySelector(".show")
     if (allShow && !currentElement.classList.contains("show")) {
@@ -40,6 +40,19 @@ function openMileStone(mileStoneElement){
         allActive.classList.remove("active");
     }    
     mileStoneElement.classList.toggle("active");
+
+    mileStoneDetails(id)
 }
+
+function mileStoneDetails(id) {
+    const milestoneImage = document.querySelector(".milestoneImage");
+    const title = document.querySelector(".title");
+    const details = document.querySelector(".details");
+
+    milestoneImage.src = allData[id].image;
+    title.innerText = allData[id].name;
+    details.innerText = allData[id].description;
+}
+
 
 ShowAllMilestoneName()

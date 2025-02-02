@@ -15,20 +15,20 @@ function loadMilestoneData() {
               </div>
             </div>
             <div class="hidden_panel">
-              ${singleData.modules.map(function(module){
-                return `
+              ${singleData.modules.map(function (module) {
+      return `
                 <div class="module border-b">
                   <p>${module.name}</p>
                 </div>
                 `
-              }).join("")}
+    }).join("")}
             </div>
           </div>`
   }).join('')}`
 }
 
 function openMileStone(milestonElement, id) {
-  const currentNode =  milestonElement.parentNode.nextElementSibling;
+  const currentNode = milestonElement.parentNode.nextElementSibling;
   const showPanel = document.querySelector(".show");
   const active = document.querySelector(".active");
 
@@ -41,21 +41,21 @@ function openMileStone(milestonElement, id) {
   if (!currentNode.classList.contains("show") && showPanel) {
     showPanel.classList.remove("show");
   };
-  
+
   currentNode.classList.toggle("show");
 
   showMileStone(id)
 };
 
 function showMileStone(id) {
-const showImage = document.querySelector(".milestoneImage")
-const title = document.querySelector(".title")
-const details = document.querySelector(".details")
+  const showImage = document.querySelector(".milestoneImage")
+  const title = document.querySelector(".title")
+  const details = document.querySelector(".details")
 
-showImage.style.opacity = "0";
-showImage.src = allData[id].image
-title.innerText = allData[id].name
-details.innerText = allData[id].description
+  showImage.style.opacity = "0";
+  showImage.src = allData[id].image
+  title.innerText = allData[id].name
+  details.innerText = allData[id].description
 
 };
 const showImage = document.querySelector(".milestoneImage")
@@ -71,7 +71,7 @@ function markMileStone(checkbox, id) {
   if (checkbox.checked) {
     milestones.removeChild(item);
     doneList.appendChild(item);
-  } else {    
+  } else {
     milestones.appendChild(item);
     doneList.removeChild(item);
   }
