@@ -28,8 +28,14 @@ function loadMilestoneData() {
 
 function openMileStone(milestonElement) {
   const currentNode =  milestonElement.parentNode.nextElementSibling;
-  const showPanel = document.querySelector(".show")
+  const showPanel = document.querySelector(".show");
+  const active = document.querySelector(".active");
 
+  if (active && !milestonElement.classList.contains("active")) {
+    active.classList.remove("active");
+  }
+
+  milestonElement.classList.toggle("active");
 
   if (!currentNode.classList.contains("show") && showPanel) {
     showPanel.classList.remove("show");
