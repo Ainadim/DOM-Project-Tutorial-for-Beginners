@@ -1,5 +1,4 @@
 const allData = JSON.parse(data).data
-console.log(allData);
 
 function loadMilestoneData() {
   const data = document.querySelector(".milestones")
@@ -7,7 +6,7 @@ function loadMilestoneData() {
     return `<div class="milestone border-b">
             <div class="flex">
               <div class="checkbox"><input type="checkbox" /></div>
-              <div>
+              <div onClick="openMileStone(this)">
                 <p>
                   ${singleData.name}
                   <span><i class="fas fa-chevron-down"></i></span>
@@ -25,5 +24,17 @@ function loadMilestoneData() {
             </div>
           </div>`
   }).join('')}`
+}
+
+function openMileStone(milestonElement) {
+  const currentNode =  milestonElement.parentNode.nextElementSibling;
+  const showPanel = document.querySelector(".show")
+
+
+  if (!currentNode.classList.contains("show") && showPanel) {
+    showPanel.classList.remove("show");
+  }
+  
+  currentNode.classList.toggle("show");
 }
 loadMilestoneData()

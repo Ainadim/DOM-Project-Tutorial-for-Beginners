@@ -92,7 +92,7 @@ body {
 }
 
 .module {
-  background-color: var(--dark);
+  background-color: var(--lightDark);
 }
 
 .milestone,
