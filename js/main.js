@@ -4,9 +4,9 @@ console.log(allData);
 function loadMilestoneData() {
   const data = document.querySelector(".milestones")
   data.innerHTML = `${allData.map(function (singleData) {
-    return `<div class="milestone border-b">
+    return `<div class="milestone border-b" id="${singleData._id}">
             <div class="flex">
-              <div class="checkbox"><input type="checkbox" /></div>
+              <div class="checkbox"><input type="checkbox"  onclick= "markMileStone(this, ${singleData._id} )"/></div>
               <div onClick="openMileStone(this, ${singleData._id})">
                 <p>
                   ${singleData.name}
@@ -63,5 +63,18 @@ showImage.onload = function () {
   this.style.opacity = "1"
 }
 
+function markMileStone(checkbox, id) {
+  const doneList = document.querySelector(".doneList")
+  const milestones = document.querySelector(".milestones")
+  const item = document.getElementById(id)
+
+  if (checkbox.checked) {
+    milestones.removeChild(item);
+    doneList.appendChild(item);
+  } else {    
+    milestones.appendChild(item);
+    doneList.removeChild(item);
+  }
+}
 
 loadMilestoneData()
